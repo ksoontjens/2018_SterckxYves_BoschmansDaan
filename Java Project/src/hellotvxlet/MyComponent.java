@@ -8,7 +8,7 @@ package hellotvxlet;
 import java.awt.*;
 import java.util.Timer;
 import org.dvb.event.*;
-import org.dvb.ui.DVBColor;
+// import org.dvb.ui.*;
 import org.havi.ui.HComponent;
 import org.havi.ui.event.HRcEvent;
 
@@ -18,18 +18,17 @@ import org.havi.ui.event.HRcEvent;
  */
 public class MyComponent extends HComponent implements UserEventListener {
     
-    Image spaceship;
-    Image stars;
+    Image spaceship; // 25x50
+    int x = 347;
+    int y = 263;
     
     public MyComponent() {
         this.setBounds(0,0,720,576);
         
         spaceship = this.getToolkit().getImage("spaceship.png");
-        stars = this.getToolkit().getImage("stars.png");
         
         MediaTracker mt = new MediaTracker(this);
         mt.addImage(spaceship, 0);
-        mt.addImage(stars, 1);
         
         try {
             mt.waitForAll();
@@ -38,20 +37,46 @@ public class MyComponent extends HComponent implements UserEventListener {
             ex.printStackTrace();
         }
         
+        UserEventRepository repo = new UserEventRepository("repo");
+        repo.addAllArrowKeys();
+        // repo.addKey(49);
+        
+        EventManager manager = EventManager.getInstance();
+        manager.addUserEventListener(this, repo);
+        
         Timer t = new Timer();
         MyTimerTask mtt = new MyTimerTask();
         mtt.setCallback(this);
         t.scheduleAtFixedRate(mtt, 0, 100);
+        // Start op 0 ms elke 20 ms
     }
     public void callback() {
         this.repaint();
     }
     public void paint(Graphics g) {
         super.paint(g);
-        g.drawImage(spaceship, 50, 50, this);
+        g.drawImage(spaceship, this.x, this.y, this);      
     }
     public void userEventReceived(UserEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(e.getType() == HRcEvent.KEY_PRESSED) {
+            if(e.getCode() == HRcEvent.VK_LEFT) {
+                this.x -= 5;
+                this.repaint();
+            }
+            if(e.getCode() == HRcEvent.VK_RIGHT) {
+                this.x += 5;
+                this.repaint();
+            }
+            if(e.getCode() == HRcEvent.VK_UP) {
+                this.y -= 5;
+                this.repaint();
+            }
+            if(e.getCode() == HRcEvent.VK_DOWN) {
+                this.y += 5;
+                this.repaint();
+            }
+        }
+        // throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }
