@@ -25,8 +25,7 @@ public class MyComponent extends HComponent implements UserEventListener {
     public MyComponent() {
         this.setBounds(0,0,720,576);
         
-        spaceship = this.getToolkit().getImage("spaceship.png");
-        
+        spaceship = this.getToolkit().getImage("spaceship.png");       
         MediaTracker mt = new MediaTracker(this);
         mt.addImage(spaceship, 0);
         
