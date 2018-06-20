@@ -11,7 +11,7 @@ import java.util.TimerTask;
  *
  * @author student
  */
-public class MyTimerTask extends TimerTask {
+public class ComponentTimerTask extends TimerTask {
     MyComponent mc;
     
     public void setCallback(MyComponent mc) {
