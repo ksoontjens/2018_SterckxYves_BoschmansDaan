@@ -11,12 +11,11 @@ import org.dvb.ui.*;
 public class HelloTVXlet implements Xlet, HActionListener {
 
     private HStaticText tekstlabel;
-    public HelloTVXlet() {
-        
     
-        
+    public HelloTVXlet() {
+    
     }
-
+    
     public void initXlet(XletContext context) throws XletStateChangeException {
         HScene scene = HSceneFactory.getInstance().getDefaultHScene();
         tekstlabel = new HStaticText("SCORE: 0");
