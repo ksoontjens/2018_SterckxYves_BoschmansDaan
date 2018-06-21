@@ -1,10 +1,10 @@
 Signature-Version: 1.0
 Created-By: 1.6.0_16 (Sun Microsystems Inc.)
 BDJ-Signature-Version: 1.0
-SHA1-Digest-Manifest: 9EP9PC+zEN3SLl39OCSaHn19DJc=
+SHA1-Digest-Manifest: TVX5VFhEsDDcuDP/WT3B2lH7SGg=
 
 Name: hellotvxlet/HelloTVXlet.class
-SHA1-Digest: Ng+9aa0OaiaLcuT25H9AZrkQ3eE=
+SHA1-Digest: 2aPWRnZht2owhJpm9AdxWlwxCH0=
 
 Name: hellotvxlet/EntityTimerTask.class
 SHA1-Digest: VkCPR/746f2vdWvTXIhLcnev6ik=
@@ -13,10 +13,10 @@ Name: hellotvxlet/TextTimer.class
 SHA1-Digest: 9AR/QXifcqLDuXnzvGolOW+DweQ=
 
 Name: hellotvxlet/Entity.class
-SHA1-Digest: T0BghZNYcAOfnY0YbaJ/xoJbJo0=
+SHA1-Digest: SdOQFN8/xG9MITZ3sp2qIowU/D8=
 
 Name: hellotvxlet/MyComponent.class
-SHA1-Digest: pKOXvnzGKKXwidpyEMAmGZWQJ5A=
+SHA1-Digest: 4NgVnHINOQfSIA3cxNlVFFdMWEU=
 
 Name: hellotvxlet/EntityResetTimer.class
 SHA1-Digest: KwCgGHAtASLHMj0Jy764Vj2TDAs=

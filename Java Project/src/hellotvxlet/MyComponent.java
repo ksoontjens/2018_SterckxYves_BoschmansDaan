@@ -136,11 +136,34 @@ public class MyComponent extends HComponent implements UserEventListener {
     }
     public void entityCollision() {
         for (int i = 0; i < this.entities.length; i++) {
-            if (entities[i].getX() >= this.x && (entities[i].getX() + 64) <= this.x + 100 && 
-                entities[i].getY() >= this.y && entities[i].getY() <= this.y + 100) 
+            if (entities[i].getX() >= this.x && (this.entities[i].getX() + 64) <= this.x + 100 && 
+                entities[i].getY() >= this.y && this.entities[i].getY() <= this.y + 100) 
             {
                 if (!scoredArr[i]) {
-                    this.score += 10;
+                    if (this.entities[i].getImage() == 6) {
+                        --this.health;
+                    } else {
+                        this.score += 10;
+                    }
+                    entities[i].setRandomImage();
+                    scoredArr[i] = true;
+                }
+            } else if (entities[i].getX() < this.x && (this.entities[i].getX() + 64) < this.x + 100 && 
+                       entities[i].getY() >= this.y && this.entities[i].getY() <= this.y + 100) {
+                if (!scoredArr[i]) {
+                    if (this.entities[i].getImage() != 6) {
+                        --this.health;
+                    }
+                    entities[i].setRandomImage();
+                    scoredArr[i] = true;
+                }
+            } else if ((this.entities[i].getX() + 64) > this.x + 100 && 
+                       entities[i].getY() >= this.y && this.entities[i].getY() <= this.y + 100) {
+                if (!scoredArr[i]) {
+                    if (this.entities[i].getImage() != 6) {
+                        --this.health;
+                    }
+                    entities[i].setRandomImage();
                     scoredArr[i] = true;
                 }
             }

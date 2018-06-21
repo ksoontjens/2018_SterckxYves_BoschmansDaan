@@ -24,7 +24,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
         this.scene = HSceneFactory.getInstance().getDefaultHScene();
         this.mc = new MyComponent();
         
-        /*this.tekstlabel = new HStaticText("SCORE: " + mc.getScore());
+        this.tekstlabel = new HStaticText("SCORE: " + mc.getScore());
         this.tekstlabel.setLocation(120,0);
         this.tekstlabel.setSize(500,50);
         this.tekstlabel.setBackgroundMode(HVisible.BACKGROUND_FILL);
@@ -39,11 +39,11 @@ public class HelloTVXlet implements Xlet, HActionListener {
         TextTimer tt = new TextTimer();
         tt.setCallback(this);
         
-        timer.scheduleAtFixedRate(tt, 0, 100);*/
+        timer.scheduleAtFixedRate(tt, 0, 100);
 
         this.scene.add(mc);
-        /*this.scene.add(healthText);
-        this.scene.add(tekstlabel);*/
+        this.scene.add(healthText);
+        this.scene.add(tekstlabel);
         
         this.scene.validate();
         this.scene.setVisible(true);

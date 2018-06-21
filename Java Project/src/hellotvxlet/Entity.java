@@ -24,6 +24,10 @@ public class Entity {
     public int getImage() {
         return this.imageNumber;
     }
+    public void setRandomImage() {
+        this.imageNumber = (int) Math.round(Math.random() * this.range);
+        this.x = (int) Math.round(Math.random() * (576 - 64));
+    }
     
     public int getX() {
         return this.x;
