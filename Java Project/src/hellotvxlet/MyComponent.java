@@ -22,7 +22,7 @@ public class MyComponent extends HComponent implements UserEventListener {
     Entity[] entities = new Entity[10];
     int entityCounter = 0;
     
-    int x = 256;
+    int x = 316;
     int y = 470;
     
     int score = 420000;
@@ -66,7 +66,7 @@ public class MyComponent extends HComponent implements UserEventListener {
             entities[i].setY(5);
             g.drawImage(images[entities[i].getImage()], entities[i].getX(), entities[i].getY(), this);
         }
-        System.out.println(entities[5].getY());
+        System.out.println(this.x);
     }
     public void userEventReceived(UserEvent e) {
         if(e.getType() == HRcEvent.KEY_PRESSED) {
@@ -107,6 +107,7 @@ public class MyComponent extends HComponent implements UserEventListener {
             this.entityCounter = ++this.entityCounter;
         } else {
             this.entityCounter = 1;
+            this.resetEntityY();
             System.out.println("Resetting entities");
         }
     }
