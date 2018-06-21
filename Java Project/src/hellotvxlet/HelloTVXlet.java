@@ -11,10 +11,12 @@ import org.havi.ui.event.*;
 public class HelloTVXlet implements Xlet, HActionListener {
 
     HStaticText tekstlabel;
+    HStaticText endText;
     HTextButton restartKnop;
     HStaticText healthText;
     HScene scene;
     MyComponent mc;
+    boolean hasDied = false;
     
     public HelloTVXlet() {
      
@@ -25,11 +27,11 @@ public class HelloTVXlet implements Xlet, HActionListener {
         this.mc = new MyComponent();
         
         this.tekstlabel = new HStaticText("SCORE: " + mc.getScore());
-        this.tekstlabel.setLocation(120,0);
-        this.tekstlabel.setSize(500,50);
+        this.tekstlabel.setLocation(280,0);
+        this.tekstlabel.setSize(200,50);
         this.tekstlabel.setBackgroundMode(HVisible.BACKGROUND_FILL);
         
-        this.healthText = new HStaticText("Health: " + mc.getHealth()); 
+        this.healthText = new HStaticText("Health: " + mc.getHealthString()); 
         this.healthText.setLocation(0,0);
         this.healthText.setSize(125,50);
         this.healthText.setBackgroundMode(HVisible.BACKGROUND_FILL);
@@ -75,7 +77,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
         this.tekstlabel.setSize(500,50);
         this.tekstlabel.setBackgroundMode(HVisible.BACKGROUND_FILL);
         
-        this.healthText = new HStaticText("Health: " + mc.getHealth()); 
+        this.healthText = new HStaticText("Health: " + mc.getHealthString()); 
         this.healthText.setLocation(0,0);
         this.healthText.setSize(125,50);
         this.healthText.setBackgroundMode(HVisible.BACKGROUND_FILL); 

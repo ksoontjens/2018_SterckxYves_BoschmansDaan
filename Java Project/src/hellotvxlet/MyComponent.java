@@ -110,15 +110,20 @@ public class MyComponent extends HComponent implements UserEventListener {
         }
     }
     public void increaseEntityCounter() {
-        if (this.entityCounter <= 9 && this.entities[8].getY() < 720) {
-            this.entityCounter = ++this.entityCounter;
+        if(this.health != 0) {
+            if (this.entityCounter <= 9 && this.entities[8].getY() < 720) {
+                this.entityCounter = ++this.entityCounter;
             
-        } 
+            } 
         
-        if (this.entityCounter > 9 && this.entities[8].getY() > 720){
-            this.entityCounter = 1;
-            this.resetEntityY();
+            if (this.entityCounter > 9 && this.entities[8].getY() > 720){
+                this.entityCounter = 1;
+                this.resetEntityY();
+            }
+        } else {
+            this.entityCounter = 0;
         }
+        
     }
     public void resetEntityY() {
         System.out.println("Resetting entities");
@@ -131,7 +136,10 @@ public class MyComponent extends HComponent implements UserEventListener {
     public String getScore() {
         return Integer.toString(this.score);
     }
-    public String getHealth() {
+    public int getHealthInt() {
+        return this.health;
+    }
+    public String getHealthString() {
         return Integer.toString(this.health);
     }
     public void entityCollision() {
