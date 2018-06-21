@@ -25,7 +25,8 @@ public class MyComponent extends HComponent implements UserEventListener {
     int x = 256;
     int y = 470;
     
-    int score = 420;
+    int score = 420000;
+    int health = 3;
     
     public MyComponent() {
         this.setBounds(0,0,720,576);
@@ -115,7 +116,10 @@ public class MyComponent extends HComponent implements UserEventListener {
         }
     }
     
-    public String score() {
+    public String getScore() {
         return Integer.toString(this.score);
+    }
+    public String getHealth() {
+        return Integer.toString(this.health);
     }
 }

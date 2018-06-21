@@ -10,8 +10,9 @@ import org.dvb.ui.*;
 
 public class HelloTVXlet implements Xlet, HActionListener {
 
-    private HStaticText tekstlabel;
-    
+    public HStaticText tekstlabel;
+    public HTextButton restartKnop;
+    public HStaticText healthText;
     public HelloTVXlet() {
     
     }
@@ -20,13 +21,20 @@ public class HelloTVXlet implements Xlet, HActionListener {
         HScene scene = HSceneFactory.getInstance().getDefaultHScene();
         MyComponent mc = new MyComponent();
         
-        tekstlabel = new HStaticText("SCORE: " + mc.score());
-        tekstlabel.setLocation(0,0);
-        tekstlabel.setSize(125,50);
-        tekstlabel.setBackground(new DVBColor(255,255,255,150));
+        tekstlabel = new HStaticText("SCORE: " + mc.getScore());
+        tekstlabel.setLocation(120,0);
+        tekstlabel.setSize(500,50);
+        //tekstlabel.setBackground(new DVBColor(255,255,255,150));
         tekstlabel.setBackgroundMode(HVisible.BACKGROUND_FILL);
-        
+
+        healthText = new HStaticText("Health: " + mc.getHealth()); 
+        healthText.setLocation(0,0);
+        healthText.setSize(125,50);
+        //healthText.setBackground(new DVBColor(255,255,255,150));
+        healthText.setBackgroundMode(HVisible.BACKGROUND_FILL);
+
         scene.add(mc);
+        scene.add(healthText);
         scene.add(tekstlabel);   
         
         scene.validate();
