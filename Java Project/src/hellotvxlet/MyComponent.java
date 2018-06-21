@@ -45,7 +45,7 @@ public class MyComponent extends HComponent implements UserEventListener {
         EntityTimerTask ett = new EntityTimerTask();
         ett.setCallback(this);
         
-        gameTimer.scheduleAtFixedRate(gtt, 0, 100);
+        gameTimer.scheduleAtFixedRate(gtt, 0, 35);
         entityTimer.scheduleAtFixedRate(ett, 0, 2500);
         
         for (int e = 0; e < this.entities.length; e++) {
@@ -68,11 +68,9 @@ public class MyComponent extends HComponent implements UserEventListener {
         if(e.getType() == HRcEvent.KEY_PRESSED) {
             if(e.getCode() == HRcEvent.VK_LEFT) {
                 this.x -= 10;
-                this.repaint();
             }
             if(e.getCode() == HRcEvent.VK_RIGHT) {
                 this.x += 10;
-                this.repaint();
             }
             /*if(e.getCode() == HRcEvent.VK_UP) {
             this.y -= 5;
