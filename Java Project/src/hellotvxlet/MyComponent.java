@@ -77,7 +77,12 @@ public class MyComponent extends HComponent implements UserEventListener {
             entities[i].setY(5);
             g.drawImage(images[entities[i].getImage()], entities[i].getX(), entities[i].getY(), this);
         }
+<<<<<<< HEAD
       
+=======
+        ++this.score;
+        System.out.println(this.x);
+>>>>>>> 0c8a5ca0adf09e115a206200e944f6d2e17b8292
     }
     public void userEventReceived(UserEvent e) {
         if(e.getType() == HRcEvent.KEY_PRESSED) {
@@ -122,12 +127,16 @@ public class MyComponent extends HComponent implements UserEventListener {
         if (this.entityCounter > 9 && this.entities[8].getY() > 720){
             this.entityCounter = 1;
             this.resetEntityY();
+<<<<<<< HEAD
             
        
 
+=======
+>>>>>>> 0c8a5ca0adf09e115a206200e944f6d2e17b8292
         }
     }
     public void resetEntityY() {
+        System.out.println("Resetting entities");
         for (int i = 0; i < this.entities.length; i++) {
             if (entities[i].getY() > 720) {entities[i].resetY();}
         }

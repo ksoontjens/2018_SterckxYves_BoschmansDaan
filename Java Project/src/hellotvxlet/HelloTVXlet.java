@@ -1,6 +1,7 @@
 package hellotvxlet;
 
 import java.awt.event.*;
+import java.util.Timer;
 import javax.tv.xlet.*;
 // import java.awt.*;
 import org.havi.ui.*;
@@ -9,33 +10,43 @@ import org.havi.ui.event.*;
 
 public class HelloTVXlet implements Xlet, HActionListener {
 
-    public HStaticText tekstlabel;
-    public HTextButton restartKnop;
-    public HStaticText healthText;
-    public HelloTVXlet() {
+    HStaticText tekstlabel;
+    HTextButton restartKnop;
+    HStaticText healthText;
+    HScene scene;
+    MyComponent mc;
     
+    public HelloTVXlet() {
+     
     }
     
     public void initXlet(XletContext context) throws XletStateChangeException {
-        HScene scene = HSceneFactory.getInstance().getDefaultHScene();
-        MyComponent mc = new MyComponent();
+        this.scene = HSceneFactory.getInstance().getDefaultHScene();
+        this.mc = new MyComponent();
         
-        tekstlabel = new HStaticText("SCORE: " + mc.getScore());
-        tekstlabel.setLocation(120,0);
-        tekstlabel.setSize(500,50);
-        tekstlabel.setBackgroundMode(HVisible.BACKGROUND_FILL);
+        this.tekstlabel = new HStaticText("SCORE: " + mc.getScore());
+        this.tekstlabel.setLocation(120,0);
+        this.tekstlabel.setSize(500,50);
+        this.tekstlabel.setBackgroundMode(HVisible.BACKGROUND_FILL);
 
-        healthText = new HStaticText("Health: " + mc.getHealth()); 
-        healthText.setLocation(0,0);
-        healthText.setSize(125,50);
-        healthText.setBackgroundMode(HVisible.BACKGROUND_FILL);
-
-        scene.add(mc);
-        scene.add(healthText);
-        scene.add(tekstlabel);   
+        this.healthText = new HStaticText("Health: " + mc.getHealth()); 
+        this.healthText.setLocation(0,0);
+        this.healthText.setSize(125,50);
+        this.healthText.setBackgroundMode(HVisible.BACKGROUND_FILL);
         
-        scene.validate();
-        scene.setVisible(true);
+        Timer timer = new Timer();
+        
+        TextTimer tt = new TextTimer();
+        tt.setCallback(this);
+        
+        timer.scheduleAtFixedRate(tt, 0, 100);
+
+        this.scene.add(mc);
+        this.scene.add(healthText);
+        this.scene.add(tekstlabel);
+        
+        this.scene.validate();
+        this.scene.setVisible(true);
         
       
     }
@@ -54,5 +65,23 @@ public class HelloTVXlet implements Xlet, HActionListener {
 
     public void actionPerformed(ActionEvent arg0) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+    public void updateText() {
+        this.scene.remove(this.tekstlabel);
+        this.scene.remove(this.healthText);
+        
+        this.tekstlabel = new HStaticText("SCORE: " + mc.getScore());
+        this.tekstlabel.setLocation(120,0);
+        this.tekstlabel.setSize(500,50);
+        this.tekstlabel.setBackgroundMode(HVisible.BACKGROUND_FILL);
+
+        this.healthText = new HStaticText("Health: " + mc.getHealth()); 
+        this.healthText.setLocation(0,0);
+        this.healthText.setSize(125,50);
+        this.healthText.setBackgroundMode(HVisible.BACKGROUND_FILL); 
+        
+        this.scene.add(this.healthText);
+        this.scene.add(this.tekstlabel);
+        this.scene.validate();
     }
 }
