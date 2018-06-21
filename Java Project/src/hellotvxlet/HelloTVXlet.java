@@ -5,7 +5,6 @@ import javax.tv.xlet.*;
 // import java.awt.*;
 import org.havi.ui.*;
 import org.havi.ui.event.*;
-import org.dvb.ui.*;
 
 
 public class HelloTVXlet implements Xlet, HActionListener {
@@ -24,13 +23,11 @@ public class HelloTVXlet implements Xlet, HActionListener {
         tekstlabel = new HStaticText("SCORE: " + mc.getScore());
         tekstlabel.setLocation(120,0);
         tekstlabel.setSize(500,50);
-        //tekstlabel.setBackground(new DVBColor(255,255,255,150));
         tekstlabel.setBackgroundMode(HVisible.BACKGROUND_FILL);
 
         healthText = new HStaticText("Health: " + mc.getHealth()); 
         healthText.setLocation(0,0);
         healthText.setSize(125,50);
-        //healthText.setBackground(new DVBColor(255,255,255,150));
         healthText.setBackgroundMode(HVisible.BACKGROUND_FILL);
 
         scene.add(mc);
