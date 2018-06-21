@@ -25,8 +25,9 @@ public class MyComponent extends HComponent implements UserEventListener {
     int x = 316;
     int y = 470;
     
-    int score = 420000;
+    int score = 0;
     int health = 3;
+
     
     public MyComponent() {
         this.setBounds(0,0,720,576);
@@ -58,7 +59,17 @@ public class MyComponent extends HComponent implements UserEventListener {
     }
     public void callback() { // update functie
         this.repaint();
-    }
+  
+           for (int i = 0; i < this.entityCounter ; i++) {
+               
+               if ((this.x - this.entities[i].getX()) < 50 && (this.y - this.entities[i].getY()) < 50 ){
+                   
+                   this.score += 10;
+                   System.out.println(this.score);
+               }
+           }
+      
+        }
     public void paint(Graphics g) {
         super.paint(g);
         g.drawImage(images[7],this.x, this.y, this);
@@ -66,7 +77,7 @@ public class MyComponent extends HComponent implements UserEventListener {
             entities[i].setY(5);
             g.drawImage(images[entities[i].getImage()], entities[i].getX(), entities[i].getY(), this);
         }
-        System.out.println(this.x);
+      
     }
     public void userEventReceived(UserEvent e) {
         if(e.getType() == HRcEvent.KEY_PRESSED) {
@@ -103,12 +114,17 @@ public class MyComponent extends HComponent implements UserEventListener {
         }
     }
     public void increaseEntityCounter() {
-        if (this.entityCounter < 9 && this.entities[this.entities.length - 1].getY() < 720) {
+        if (this.entityCounter <= 9 && this.entities[8].getY() < 720) {
             this.entityCounter = ++this.entityCounter;
-        } else {
+            System.out.println( this.entityCounter);
+        } 
+        
+        if (this.entityCounter > 9 && this.entities[8].getY() > 720){
             this.entityCounter = 1;
             this.resetEntityY();
-            System.out.println("Resetting entities");
+            
+       
+
         }
     }
     public void resetEntityY() {
