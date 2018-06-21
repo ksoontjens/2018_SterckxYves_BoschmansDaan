@@ -58,6 +58,7 @@ public class MyComponent extends HComponent implements UserEventListener {
     }
     public void callback() { // update functie
         this.repaint();
+        ++this.score;
     }
     public void paint(Graphics g) {
         super.paint(g);
@@ -66,8 +67,6 @@ public class MyComponent extends HComponent implements UserEventListener {
             entities[i].setY(5);
             g.drawImage(images[entities[i].getImage()], entities[i].getX(), entities[i].getY(), this);
         }
-        ++this.score;
-        System.out.println(this.x);
     }
     public void userEventReceived(UserEvent e) {
         if(e.getType() == HRcEvent.KEY_PRESSED) {
