@@ -27,6 +27,7 @@ public class MyComponent extends HComponent implements UserEventListener {
     
     int score = 0;
     int health = 3;
+
     
     public MyComponent() {
         this.setBounds(0,0,720,576);
@@ -58,8 +59,22 @@ public class MyComponent extends HComponent implements UserEventListener {
     }
     public void callback() { // update functie
         this.repaint();
+<<<<<<< HEAD
         ++this.score;
     }
+=======
+  
+           for (int i = 0; i < this.entityCounter ; i++) {
+               
+               if ((this.x - this.entities[i].getX()) < 50 && (this.y - this.entities[i].getY()) < 50 ){
+                   
+                   this.score += 10;
+                   System.out.println(this.score);
+               }
+           }
+      
+        }
+>>>>>>> cf3780f947fcfc8fb4b68c8e0f5114890d6c2d27
     public void paint(Graphics g) {
         super.paint(g);
         g.drawImage(images[7],this.x, this.y, this);
@@ -67,6 +82,15 @@ public class MyComponent extends HComponent implements UserEventListener {
             entities[i].setY(5);
             g.drawImage(images[entities[i].getImage()], entities[i].getX(), entities[i].getY(), this);
         }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      
+=======
+        ++this.score;
+        System.out.println(this.x);
+>>>>>>> 0c8a5ca0adf09e115a206200e944f6d2e17b8292
+>>>>>>> cf3780f947fcfc8fb4b68c8e0f5114890d6c2d27
     }
     public void userEventReceived(UserEvent e) {
         if(e.getType() == HRcEvent.KEY_PRESSED) {
@@ -103,11 +127,20 @@ public class MyComponent extends HComponent implements UserEventListener {
         }
     }
     public void increaseEntityCounter() {
-        if (this.entityCounter < 9 && this.entities[this.entities.length - 1].getY() < 720) {
+        if (this.entityCounter <= 9 && this.entities[8].getY() < 720) {
             this.entityCounter = ++this.entityCounter;
-        } else {
+            System.out.println( this.entityCounter);
+        } 
+        
+        if (this.entityCounter > 9 && this.entities[8].getY() > 720){
             this.entityCounter = 1;
             this.resetEntityY();
+<<<<<<< HEAD
+            
+       
+
+=======
+>>>>>>> 0c8a5ca0adf09e115a206200e944f6d2e17b8292
         }
     }
     public void resetEntityY() {
