@@ -27,6 +27,8 @@ public class MyComponent extends HComponent implements UserEventListener {
     
     int score = 0;
     int health = 3;
+    
+    boolean[] scoredArr = new boolean[10];
 
     
     public MyComponent() {
@@ -54,43 +56,24 @@ public class MyComponent extends HComponent implements UserEventListener {
         
         for (int e = 0; e < this.entities.length; e++) {
             entities[e] = new Entity();
+            scoredArr[e] = false;
         }
         
     }
     public void callback() { // update functie
-        this.repaint();
-<<<<<<< HEAD
-        ++this.score;
+        this.repaint();   
+        this.entityCollision();
     }
-=======
-  
-           for (int i = 0; i < this.entityCounter ; i++) {
-               
-               if ((this.x - this.entities[i].getX()) < 50 && (this.y - this.entities[i].getY()) < 50 ){
-                   
-                   this.score += 10;
-                   System.out.println(this.score);
-               }
-           }
-      
-        }
->>>>>>> cf3780f947fcfc8fb4b68c8e0f5114890d6c2d27
+
     public void paint(Graphics g) {
         super.paint(g);
         g.drawImage(images[7],this.x, this.y, this);
         for (int i = 0; i < this.entityCounter; i++) {
             entities[i].setY(5);
-            g.drawImage(images[entities[i].getImage()], entities[i].getX(), entities[i].getY(), this);
+            if (!scoredArr[i]) {
+                g.drawImage(images[entities[i].getImage()], entities[i].getX(), entities[i].getY(), this);
+            }
         }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-      
-=======
-        ++this.score;
-        System.out.println(this.x);
->>>>>>> 0c8a5ca0adf09e115a206200e944f6d2e17b8292
->>>>>>> cf3780f947fcfc8fb4b68c8e0f5114890d6c2d27
     }
     public void userEventReceived(UserEvent e) {
         if(e.getType() == HRcEvent.KEY_PRESSED) {
@@ -129,24 +112,19 @@ public class MyComponent extends HComponent implements UserEventListener {
     public void increaseEntityCounter() {
         if (this.entityCounter <= 9 && this.entities[8].getY() < 720) {
             this.entityCounter = ++this.entityCounter;
-            System.out.println( this.entityCounter);
+            
         } 
         
         if (this.entityCounter > 9 && this.entities[8].getY() > 720){
             this.entityCounter = 1;
             this.resetEntityY();
-<<<<<<< HEAD
-            
-       
-
-=======
->>>>>>> 0c8a5ca0adf09e115a206200e944f6d2e17b8292
         }
     }
     public void resetEntityY() {
         System.out.println("Resetting entities");
         for (int i = 0; i < this.entities.length; i++) {
             if (entities[i].getY() > 720) {entities[i].resetY();}
+            scoredArr[i] = false;
         }
     }
     
@@ -155,5 +133,17 @@ public class MyComponent extends HComponent implements UserEventListener {
     }
     public String getHealth() {
         return Integer.toString(this.health);
+    }
+    public void entityCollision() {
+        for (int i = 0; i < this.entities.length; i++) {
+            if (entities[i].getX() >= this.x && (entities[i].getX() + 64) <= this.x + 100 && 
+                entities[i].getY() >= this.y && entities[i].getY() <= this.y + 100) 
+            {
+                if (!scoredArr[i]) {
+                    this.score += 10;
+                    scoredArr[i] = true;
+                }
+            }
+        }
     }
 }
