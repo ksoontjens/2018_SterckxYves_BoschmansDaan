@@ -18,12 +18,14 @@ public class HelloTVXlet implements Xlet, HActionListener {
     
     public void initXlet(XletContext context) throws XletStateChangeException {
         HScene scene = HSceneFactory.getInstance().getDefaultHScene();
-        tekstlabel = new HStaticText("SCORE: 0");
+        MyComponent mc = new MyComponent();
+        
+        tekstlabel = new HStaticText("SCORE: " + mc.score());
         tekstlabel.setLocation(0,0);
         tekstlabel.setSize(125,50);
         tekstlabel.setBackground(new DVBColor(255,255,255,150));
         tekstlabel.setBackgroundMode(HVisible.BACKGROUND_FILL);
-        MyComponent mc = new MyComponent();
+        
         scene.add(mc);
         scene.add(tekstlabel);   
         

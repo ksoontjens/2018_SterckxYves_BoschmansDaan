@@ -25,6 +25,8 @@ public class MyComponent extends HComponent implements UserEventListener {
     int x = 256;
     int y = 470;
     
+    int score = 420;
+    
     public MyComponent() {
         this.setBounds(0,0,720,576);
         
@@ -63,7 +65,7 @@ public class MyComponent extends HComponent implements UserEventListener {
             entities[i].setY(5);
             g.drawImage(images[entities[i].getImage()], entities[i].getX(), entities[i].getY(), this);
         }
-        //System.out.println(entities[1].getY());
+        System.out.println(entities[5].getY());
     }
     public void userEventReceived(UserEvent e) {
         if(e.getType() == HRcEvent.KEY_PRESSED) {
@@ -73,14 +75,6 @@ public class MyComponent extends HComponent implements UserEventListener {
             if(e.getCode() == HRcEvent.VK_RIGHT) {
                 this.x += 10;
             }
-            /*if(e.getCode() == HRcEvent.VK_UP) {
-            this.y -= 5;
-            this.repaint();
-            }
-            if(e.getCode() == HRcEvent.VK_DOWN) {
-            this.y += 5;
-            this.repaint();
-            }*/
         }
     }
        
@@ -112,7 +106,6 @@ public class MyComponent extends HComponent implements UserEventListener {
             this.entityCounter = ++this.entityCounter;
         } else {
             this.entityCounter = 1;
-            this.resetEntityY();
             System.out.println("Resetting entities");
         }
     }
@@ -120,5 +113,9 @@ public class MyComponent extends HComponent implements UserEventListener {
         for (int i = 0; i < this.entities.length; i++) {
             if (entities[i].getY() > 720) {entities[i].resetY();}
         }
+    }
+    
+    public String score() {
+        return Integer.toString(this.score);
     }
 }
