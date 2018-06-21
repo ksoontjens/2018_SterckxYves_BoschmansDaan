@@ -20,5 +20,6 @@ public class ComponentTimerTask extends TimerTask {
     
     public void run() {
         this.mc.callback();
+        //this.mc.resetEntityY();
     }
 }

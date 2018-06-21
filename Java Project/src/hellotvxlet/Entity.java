@@ -35,4 +35,7 @@ public class Entity {
     public void setY(int addition) {
         this.y += addition;
     }
+    public void resetY() {
+        this.y = 0;
+    }
 }
